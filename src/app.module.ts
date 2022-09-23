@@ -5,7 +5,7 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-console.log(Joi.string());
+import { Restaurant } from './restarants/entities/restaurant.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -28,7 +28,9 @@ console.log(Joi.string());
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
+      synchronize: process.env.NODE_ENV !== 'prod',
       logging: true,
+      entities: [Restaurant],
     }),
     GraphQLModule.forRoot({
       driver: ApolloDriver,
