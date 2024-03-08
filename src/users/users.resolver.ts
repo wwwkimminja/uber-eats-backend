@@ -11,8 +11,8 @@ import { LoginInput, LoginOutput } from './dtos/login.dto';
 export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
-  @Query(() => Boolean)
-  hi() {
+  @Query(() => User)
+  me() {
     return true;
   }
 
