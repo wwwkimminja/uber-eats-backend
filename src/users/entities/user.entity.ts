@@ -1,3 +1,4 @@
+import { Verification } from './verification.entity';
 import {
   Field,
   InputType,
@@ -34,6 +35,10 @@ export class User extends CoreEntity {
   @Field((type) => UserRole)
   @IsEnum(UserRole)
   role: UserRole;
+
+  @Column({ default: false })
+  @Field((type) => Boolean)
+  verified: boolean;
 
   @BeforeInsert()
   @BeforeUpdate()
